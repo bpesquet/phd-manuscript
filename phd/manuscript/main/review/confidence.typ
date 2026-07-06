@@ -1,32 +1,28 @@
 == Confidence
 
-For example, before taking an exam, a student feels more or less confident regarding his/her chances of success. Yet it is not that easy to come up with a precise and unambiguous scientific definition of confidence.
+Imagine you are coming back to a city you visited a few years ago. Starting from your hotel, you start walking toward a specific place of interest, navigating around from memory rather than using your smartphone. At each intersection, you have to decide which street to take. Sometimes you feel almost certain you remember the vicinity correctly, and you move around without hesitation. Other times, you feel unsure, glance around for landmarks, or even stop to ask someone. Eventually you arrive to your destination, not necessarily through the fastest possible path.
 
-Confidence influences learning, information seeking, social communication, error correction, and future behavior.
-
-Confidence allows individuals to distinguish between decisions that should be acted upon immediately and those that require further evidence, deliberation, or revision.
-
-Confidence is a cornerstone of adaptive behaviour. It guides whether agents should seek more information, revise their beliefs, communicate with others, or commit to actions. Research on confidence spans psychology, neuroscience, economics, artificial intelligence, and philosophy. In accordance with previous chapters, we will study it from the conceptual, computational and neural perspectives.
+Each of your decisions was accompanied by a sense of how likely you were to be right, before you actually found out. That feeling is _confidence_, a cornerstone of adaptive behaviour that influences both decision-making and learning. It guides whether agents should seek more information, revise their beliefs, communicate with others, or commit to actions. Research on confidence spreads across several subfields of psychology, neuroscience, economics, artificial intelligence, and philosophy. In accordance with previous chapters, we will study it from the conceptual, computational and neural perspectives.
 
 === Conceptual overview
 
-Everyone knows intuitively what confidence is about.
+Everyone knows intuitively what confidence is about. Yet it is not that straightforward to characterize it from a scientific standpoint. We start by defining what confidence is (and is not). We then review how it can be measured experimentally, and its different roles in cognition.
 
 ==== Definition and distinctions
 
-The subjective sense of certainty/rightness accompanying a decision/belief/memory/action.
+Confidence has been defined as a belief about the validity of our own thoughts, knowledge or performance that relies on a subjective feeling @grimaldiThereAreThings2015. This psychological, human-centered definition is challenged by recent advances in a nascent field: the neuroscience of confidence. In particular, studies have shown that the sense of confidence, from both behavioral and neuronal standpoints, is not specifically humane but shared with other mammals like monkeys or rodents @kepecsNeuralCorrelatesComputation2008. Moreover, concepts like ”belief”, ”thought” and ”feeling” are problematic from a neuroscientific perspective. In the context of decision-making, confidence has been defined as the subjective estimate of decision quality @brusSourcesConfidenceValuebased2021, or more formally as the probability that a choice or proposition is correct given the available evidence @pougetConfidenceCertaintyDistinct2016. Confidence in one's own (hypothetical) decisions or actions is sometimes called _propositional confidence_ @flemingMetacognitionConfidenceReview. In a broader perspective, we argue that confidence can de defined as the subjective estimate of an object's reliability. This formulation illustrates several key traits of confidence:
 
-Confidence may be a computational estimate of the reliability of current beliefs.
+- Unlike a qualitative feeling or impression, it is a graded, quantitative signal;
+- It is always related to something or someone: a decision, a memory, an external agent, etc.
+- It is subjective, and may not match the objective property of its object;
 
-Confidence represents a second-order judgment (FlemingDolanFrith2012):
-- First-order process: "What is the answer?"
-- Second-order process: "How likely is my answer correct?"
+Confidence is the outcome a second-order judgment @flemingNeuralBasisMetacognitive2012. When you decide which street to take, a first-order cognitive process generates the choice itself, and a second-order process evaluates how reliable that choice is likely to be. Confidence judgments directly reflect a person's assessment of their own cognitive processes and are applicable to many domains (perception, memory, reasoning, decision-making, etc.). They are indeed the major and most widely studied form of metacognitive monitoring @flemingHowMeasureMetacognition2014, @flemingMetacognitionConfidenceReview.
 
-Confidence should be distinguished from related but non-identical constructs. This is the object of the following paragraphs.
+Now that confidence has been more precisely defined, we should be able to distinguish it from related but non-identical constructs. This is the object of the following paragraphs.
 
 ===== Accuracy
 
-Accuracy is the fact of being being exact or correct. It is an objective, externally observable property of a response. On the contrary, confidence is subjective and subject-centric.
+Accuracy is the fact of being being exact or correct. It is an objective, externally observable property. On the contrary, confidence is subjective and subject-centric.
 
 An important topic is that confidence may be decoupled from accuracy. Two people (or the same person on two different occasions) can perform identically on a task while reporting very different levels of confidence.
 

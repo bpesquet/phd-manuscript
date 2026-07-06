@@ -116,6 +116,9 @@ The frontal lobe, situated anterior to the central sulcus, is the largest cortic
   ),
 ) <fig:pfc>
 
+https://www.nature.com/articles/s41583-022-00642-0
+https://www.brainfacts.org/3d-brain#intro=false&focus=Brain
+
 ===== Parietal lobe
 
 ===== Temporal lobe

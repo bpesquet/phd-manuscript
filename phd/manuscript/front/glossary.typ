@@ -1,6 +1,6 @@
 = Glossary
 
-/ Accuracy: Proportion of all choices that were correct or optimal.
+/ Accuracy: (1) Fact of being exact or correct. (2) Proportion of all choices that were correct or optimal.
 
 / Bias: Systematic tendency of a decision-maker to favor one alternative over the others.
 

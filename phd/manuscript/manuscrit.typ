@@ -21,6 +21,7 @@
 
 #include "main/introduction.typ"
 #include "main/litterature-review.typ"
+#include "main/question.typ"
 #include "main/contributions.typ"
 #include "main/conclusion.typ"
 

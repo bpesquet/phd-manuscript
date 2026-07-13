@@ -11,3 +11,7 @@ $cal(N)(mu_("noise"), sigma_("noise")^2)$
 $ "DV"_t(e_1, e_2, ..., e_t) = "DV"_(t-1)(e_1, e_2, ..., e_(t-1)) + log P(e_t|h_1)/P(e_t|h_2) $ <eq:sprt>
 
 = Confidence
+
+(calibration) is not a global trait; individuals may be well-calibrated in perceptual tasks but poorly calibrated elsewhere.
+
+Overconfidence: pilots, surgeons

@@ -93,7 +93,7 @@ Binary decisions have only two possible outcomes. As a first approach, the assoc
 
 The following sections review several prominent models of binary decision-making.
 
-===== Signal Detection Theory <par:sdt>
+===== Signal Detection Theory <par:decision_sdt>
 
 #acr("SDT") is a framework for understanding decision-making in the presence of uncertainty. It provides a mathematical and conceptual foundation for analyzing the capacity of a decision-maker — biological or artificial — to discriminate _signal_ (meaningful information) from  _noise_. Originally developed in the mid-#nth(20) century to assess how faithfully a radar operator was able to distinguish incoming threats (signal) from random interferences or electronic artefacts (noise), #acr("SDT") has since been applied to many fields, including cognitive psychology @greenSignalDetectionTheory1966, clinical medicine, neuroscience, and machine learning.
 
@@ -240,7 +240,7 @@ The core parameters of the #acr("DDM") are:
 
 - $a$, the decision boundary (threshold), implements the #acr("SAT"): increasing it results in fewer errors but also slower responses. In this review, we assume _symmetric bounds_ $(-a,a)$: evidence accumulates between $-a$ and $a$. Some descriptions of #acr("DDM") use bounds $0$ and $a$ instead.
 - $z$, the starting point of evidence accumulation, represents the a priori bias favoring one of the two alternatives. In an unbiased setting, $z = 0$ with symmetric bounds (otherwise, $z = a/2$).
-- $v$ (sometimes denoted $mu$), the _drift rate_,  encodes the rate of evidence accumulation per unit of time (i.e. the average speed of evidence accumulation). Similarly to $d'$ (@par:sdt), it is an index of task difficulty or subject sensitivity.
+- $v$ (sometimes denoted $mu$), the _drift rate_,  encodes the rate of evidence accumulation per unit of time (i.e. the average speed of evidence accumulation). Similarly to $d'$ (@par:decision_sdt), it is an index of task difficulty or subject sensitivity.
 - $sigma$, the noise magnitude, governs the importance of internal noise in the decision process.
 - $T_("er")$, the non-decision time (@par:decision_time_course), measures the time needed for peripheral processes such as stimulus encoding and motor response.
 

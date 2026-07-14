@@ -1,3 +1,8 @@
+#import "../../utils.typ"
+#import utils.acrostiche: acr, acrpl
+#import utils.nth: nth
+#import utils: flex-caption
+
 == Confidence
 
 Imagine you are coming back to a city you visited a few years ago. Starting from your hotel, you start walking toward a specific place of interest, navigating around from memory rather than using your smartphone. At each intersection, you have to decide which street to take. Sometimes you feel almost certain you remember the vicinity correctly, and you move around without hesitation. Other times, you feel unsure, glance around for landmarks, or even stop to ask someone. Eventually you arrive to your destination, not necessarily through the fastest possible path.
@@ -20,7 +25,7 @@ Confidence is the outcome of a second-order judgment @flemingNeuralBasisMetacogn
 
 Now that confidence has been more precisely defined, we should be able to distinguish it from related but non-identical constructs. This is the object of the following paragraphs.
 
-===== Accuracy
+===== Accuracy <par:confidence_accuracy>
 
 Accuracy, the fact of being exact or correct, is an objective, externally observable property. On the contrary, confidence is subjective and subject-centric. Confidence may actually be decoupled from accuracy: two people (or the same person on two different occasions) can perform identically on a task while reporting very different levels of confidence. Systematic discrepancies define _overconfidence_ (confidence exceeds accuracy) and _underconfidence_ (the opposite). Both are pervasive problems in decision-making: for example, overconfidence has been linked to belief in conspiracy theories @pennycookFrameworkUnderstandingReasoning, anti-scientific stances @lightKnowledgeOverconfidenceAssociated2022, and susceptibility to misinformation @lyonsOverconfidenceNewsJudgments2021.
 
@@ -38,6 +43,58 @@ Confidence and error monitoring are closely related metacognitive processes, but
 
 Confidence and trust play distinct roles in decision-making. Confidence is related to an internal cognitive variable (thought, knowledge, decision, etc). Trust is the willingness to rely on another person, system, or source despite uncertainty. Unlike confidence, it is a social construct implying a relationship between a _trustor_ and a _trustee_. A decision-maker may be highly confident in their own assessment while placing little trust in external advice.
 
+==== Measurement
+
+As a subjective, internal quantity, confidence cannot be observed directly. Explicit confidence reports (via textual or numerical ratings) are only accessible to humans. Setups involving non-human animals like rodents are primates are restricted to implicit reports @kepecsNeuralCorrelatesComputation2008. Over the past decades, several experimental paradigms have been developed to elicit confidence, together with statistical measures that extract meaningful quantities from the resulting data. In order to study confidence in the decision-making context, a distinction is made between the decision to take, called a first-order, object-level or _type 1_ task, and the expression of confidence about it, called a second-order, meta-level or _type 2_ task. This corresponds to specific flows of information in the decision-maker's cognitive system (@fig:type1_type2_tasks).
+
+#figure(
+  image("images/confidence/mamassianVisualConfidence2020_1.png", width: 100%),
+  caption: flex-caption(
+    short: [Flow of information for perceptual and confidence judgments],
+    long: [Flow of Information for perceptual (type 1) and confidence (type 2) judgments. Perceptual decisions rely on sensory evidence (physical stimulus $U$) and may be corrupted by sensory noise $N$. Confidence judgments rely on confidence evidence that can be a noisy duplicate of the sensory evidence (serial stream), a novel estimation of the stimulus (parallel stream), or a combination of both. Confidence evidence may also be corrupted by confidence noise $M$. Adapted from @mamassianConfidenceForcedChoiceOther2020.],
+  ),
+) <fig:type1_type2_tasks>
+
+===== Methods
+
+The most straightforward measurement protocol is the _confidence rating_, in which, immediately after a decision,  participants report their level of confidence about it on a discrete scale (e.g., from "guessing" to "certain"). Ratings are simple to collect and widely used, but rely on participants' ability and willingness to translate an internal estimate into a numerical report. This introduces individual differences in scale usage that complicate comparisons across participants or conditions [36]. Moreover, it may also lead to possible confusions between type 1 and type 2 judgments: confidence rating scales can be interpreted by the observer as a mean to report finer sensory judgments (a type 1 task) instead of evaluating the correctness of their decision (a type 2 task) @mamassianConfidenceForcedChoiceOther2020.
+
+Pioneered in experimental psychology nearly a century ago, the _uncertain option_ method adds another alternative, the "uncertain option", to the available responses. It has been applied to contexts where verbal reporting is impossible, such as experiments involving monkeys, dolphins, rats and pigeons. A challenge is that it can be interpreted as a $n+1$ type 1 only task solved by learning stimulus-response categories, without necessitating confidence estimations @kepecsComputationalFrameworkStudy2012.
+
+The _opt-out_ paradigm, also suitable for animal research, offers participants (human or non-human) the option to decline a trial in exchange for a smaller but guaranteed reward, instead of risking the larger reward associated with a correct first-order response. Participants should opt out selectively on the trials where they are more likely to be wrong, so opt-out provides a behavioral proxy for confidence without requiring introspective report.
+
+_Post-decision wagering_ replaces verbal or numerical reports with an incentive-compatible behavior: after a decision, subjects are asked to gamble on whether their response was correct. If the decision is correct, the wager amount is kept. The amount of the bet is assumed to reflect a subject’s confidence in his or her decision @flemingNeuralBasisMetacognitive2012 (@fig:confidence_protocols_animals).
+
+Finally, the _confidence forced-choice_ paradigm sidesteps individual scale biases by asking participants to directly compare their confidence across two decisions, choosing for which of the two they are more confident, rather than rating each decision separately. Because it relies on relative rather than absolute judgments, this method is particularly well-suited to comparing confidence across different tasks, modalities, or conditions that would otherwise be hard to place on a common scale @mamassianConfidenceForcedChoiceOther2020.
+
+#figure(
+  image("images/confidence/kepecsComputationalFramework2012_1.png", width: 80%),
+  caption: flex-caption(
+    short: [Experimental protocols for stuying confidence in animals],
+    long: [Experimental protocols for stuying confidence in animals. _(a) _ Uncertain option tasks add an additional choice to the available responses A nd B. _(b)_ Opt-out tasks offer the possibility of declining the test and receiving a smaller reward. In a fraction of trials, the option to decline is omitted. _(c)_ In post-decision wagering, there is first a type 1 task (here a two-category discrimination between A or B), and then a confidence report, such as low (L) or high (H) options. Adapted from @kepecsComputationalFrameworkStudy2012.],
+  ),
+) <fig:confidence_protocols_animals>
+
+===== Measures
+
+Once confidence has been elicited by one of the methods above, several statistical measures can be computed from the resulting data, each capturing a distinct property of metacognition.
+
+_Metacognitive sensitivity_ (also called confidence or type 2 sensitivity) captures the capacity of a decision-maker to correlate confidence judgments and objective task performance. For example, being highly confident when taking correct decisions and less confident otherwise demonstrates a high degree of sensitivity. In other words, metacognitive sensibility evaluates confidence calibration (@par:confidence_accuracy). It is is often affected by task performance itself: an individual will appear to have greater sensitivity on an easy task compared to a hard task @flemingHowMeasureMetacognition2014. Metacognitive sensibility should not be confused with type 1 sensitivity (@par:decision_sdt).
+
+_Metacognitive bias_ (also called confidence or type 2 bias) describes a difference in subjective confidence despite constant task performance. Two individuals with identical metacognitive sensitivity may nonetheless differ systematically in their average confidence level, one being chronically over- or underconfident (@fig:confidence_measures) .
+
+#figure(
+  image("images/confidence/flemingMeasuringMetacognition2014_1.png", width: 80%),
+  caption: flex-caption(
+    short: [Theoretical dissociation between metacognitive sensitivity and bias],
+    long: [Theoretical dissociation between metacognitive sensitivity and bias. Each graph shows a hypothetical probability density of confidence ratings for correct and incorrect trials. Metacognitive sensitivity corresponds to the degree of separation between the distributions. Metacognitive bias relates to the overall level of confidence expressed, regardless of the correctness of the trial. Note that contrary to this schematic example, real confidence distributions are unlikely to be Gaussian. Adapted from @flemingHowMeasureMetacognition2014.],
+  ),
+) <fig:confidence_measures>
+
+_Metacognitive efficiency_ (also called confidence efficiency) is a decision-maker’s level of metacognitive sensitivity given a certain level of task performance. Type 2 sensitivity is mechanically dependent on type 1 task performance: an agent who's better at the primary task will tend to show higher sensibility almost by construction. Efficiency relates metacognitive sensitivity to first-order task performance, typically through normalization (@par:confidence_sdt). This helps isolating metacognitive performance from task difficulty.
+
+Together, sensitivity, bias, and efficiency provide complementary views of an agent's metacognitive ability.
+
 ==== Roles
 
 Confidence performs multiple cognitive functions:
@@ -49,26 +106,13 @@ Confidence performs multiple cognitive functions:
 
 An agent updates its belief toward a partner's opinion in proportion to the partner's expressed confidence and that confidence's historical reliability
 
-==== Measurement
-
-===== Methods
-
-Confidence ratings
-Post-decision wagering
-Opt-out paradigm
-Confidence forced choice
-
-===== Measures
-
-Sensitivity, bias, efficiency
-
 === Computational modeling
 
 ==== Monitoring
 
 ===== Statistical correlation
 
-===== Signal Detection Theory
+===== Signal Detection Theory <par:confidence_sdt>
 
 Type1/type2, meta-d', M-ratio etc (ManiscalcoLau2012)
 

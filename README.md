@@ -1,14 +1,19 @@
-# Publications
+# PhD manuscript
 
-This repository contains the source code for some of my scientific publications, (co-)authored using either [LaTeX](https://www.latex-project.org/) or [Typst](https://github.com/typst/typst).
+> 🚧 Work in progress
 
-The generated documents can be found on my [homepage](https://www.bpesquet.fr).
+This repository contains the source code for my PhD manuscript, written with ❤️, 🥵 and [Typst](https://github.com/typst/typst).
 
-## Table of Contents
+## Development notes
 
-### PhD thesis
+```bash
+# Generate the manuscript in PDF format
+typst compile src/manuscript.typ
+```
 
-- 🚧 [Manuscript](./phd/manuscript/) (defense scheduled for Autumn 2026)
+I use the [Typst VS Code extension](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist) for day-to-day work.
+
+Many thanks to Gaétan Lepage for [paving the way](https://github.com/GaetanLepage/phd-manuscript).
 
 ## License
 

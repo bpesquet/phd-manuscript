@@ -15,3 +15,5 @@ $ "DV"_t(e_1, e_2, ..., e_t) = "DV"_(t-1)(e_1, e_2, ..., e_(t-1)) + log P(e_t|h_
 (calibration) is not a global trait; individuals may be well-calibrated in perceptual tasks but poorly calibrated elsewhere.
 
 Overconfidence: pilots, surgeons
+
+Calibration: The hard-easy effect is a well-documented pattern in confidence/calibration research: people tend to be overconfident on hard tasks and underconfident (or well-calibrated) on easy tasks, relative to their actual accuracy.

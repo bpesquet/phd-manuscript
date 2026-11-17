@@ -172,7 +172,7 @@ Another possible measure of sensitivity uses the #acr("ROC") curve, which plots 
   ),
 ) <fig:sdt_roc>
 
-===== Sequential sampling
+===== Sequential sampling <par:decision_eam>
 
 #acr("SDT") does not handle the dimension of decision time. Another class of decision-making models assumes that the decision variable is constructed from multiple pieces of evidence integrated over time. The process stops when a threshold is reached, which triggers the decision. This approach, called _sequential sampling_ or _sequential analysis_, allows studying the relationship between accuracy and the time needed to take a decision (@par:sat). Different approaches to sequential sampling coexist. Models differ according to the number of decision variables, and whether these are independent, correlated or subject to non-linear operations like decay or mutual inhibition. Models belonging to this family are called #acrpl("SSM") or #acrpl("EAM") (@fig:eam_family, @fig:eam_comparison).
 

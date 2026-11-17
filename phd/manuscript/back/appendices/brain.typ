@@ -4,7 +4,7 @@
 
 == The human brain: an overview
 
-The human nervous system is divided into two primary components: the #acr("CNS") is comprised of the brain and the spinal cord, and the #acr("PNS") is comprised of the cranial and spinal nerves. The brain is the main organ of the #acr("CNS") and the seat of cognition. This section is a concise introduction to fundamental brain mechanisms geared toward non-neuroscientists. As such, it contains only general knowledge and may be skipped by readers already familiar with neuroscience.
+The human nervous system is divided into two primary components: the #acr("CNS"), comprised of the brain and the spinal cord, and the #acr("PNS"), comprised of the cranial and spinal nerves. The brain is the main organ of the #acr("CNS") and the seat of cognition. This section is a concise introduction to fundamental brain mechanisms geared toward non-neuroscientists. It contains only general knowledge and may be skipped by readers already familiar with neuroscience.
 
 === Neurons
 
@@ -19,7 +19,7 @@ Neurons are the fundamental units of the brain. Their role is to transmit inform
   ),
 ) <fig:neuron>
 
-Neurons encode stimulus strength through _firing rate_. Since the height of the action potential is always the same for a given neuron, the strength of the incoming stimulus determines the frequency of action potential firing. There is, however, an upper limit to a neuron's firing rate set by its _refractory period_, during which the neuron membrane repolarizes after a spike (@fig:neuron_firing_rate). Alongside this _rate coding_ technique, the nervous system also uses _temporal coding_ (the precise timing of individual spikes relative to a reference signal) to carry information. The firing rate is measured in Hertz (Hz) or spikes per second. Most neurons fire at up to a few hundred Hertz, with some specialized cells reaching up to 1,000 Hz. At the population level, the combined activity of large assemblies of rhythmically synchronized neurons produces oscillatory patterns known as _brain waves_ (@tab:brain_waves).
+Neurons encode stimulus strength through _firing rate_. Since the height of the action potential is always the same for a given neuron, the strength of the incoming stimulus determines the frequency of action potential firing. There is, however, an upper limit to a neuron's firing rate set by its _refractory period_, during which the neuron membrane repolarizes after a spike (@fig:neuron_firing_rate). Alongside this _rate coding_ technique, the nervous system also uses _temporal coding_ (the precise timing of individual spikes relative to a reference signal) to carry information. The firing rate is measured in Hertz (Hz) or spikes per second. Most neurons fire at up to a few hundred Hz, with some specialized cells reaching up to 1,000 Hz. At the population level, the combined activity of large assemblies of rhythmically synchronized neurons produces oscillatory patterns known as _brain waves_ (@tab:brain_waves).
 
 #figure(
   image("images/brain/pesquetFiringRate.png", width: 100%),

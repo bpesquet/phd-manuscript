@@ -1,39 +1,38 @@
 #import "../../utils.typ"
-#import utils.acrostiche: acr, acrpl
-#import utils.nth: nth
+#import utils.acrostiche: acr
 #import utils: flex-caption
 
 == Confidence
 
-Imagine you are coming back to a city you visited a few years ago. Starting from your hotel, you start walking toward a specific place of interest, navigating around from memory rather than using your smartphone. At each intersection, you have to decide which street to take. Sometimes you feel almost certain you remember the vicinity correctly, and you move around without hesitation. Other times, you feel unsure, glance around for landmarks, or even stop to ask someone. Eventually you arrive to your destination, not necessarily through the fastest possible path.
+Imagine that you are coming back to a city you visited a few years ago. Starting from your hotel, you begin walking toward a specific place of interest, navigating around from memory rather than using your smartphone. At each intersection, you have to decide which street to take. Sometimes you feel almost certain you remember the neighborhood correctly, and you move around without hesitation. Other times, you feel unsure, glance around for landmarks, or even stop to ask someone. Eventually you arrive to your destination, not necessarily through the fastest possible path.
 
-Each of your decisions was accompanied by a sense of how likely you were to be right, before you actually found out. That feeling is _confidence_, a cornerstone of adaptive behavior that influences both decision-making and learning. It guides whether agents should seek more information, revise their beliefs, communicate with others, or commit to actions. Research on confidence spreads across several subfields of psychology, neuroscience, economics, artificial intelligence, and philosophy. In accordance with previous chapters, we will study it from the conceptual, computational and neural perspectives.
+During this trip, each of your decisions was accompanied by a sense of how likely you were to be right, before you actually found out. That feeling is _confidence_, a cornerstone of adaptive behavior that influences both decision-making and learning. It guides whether agents should seek more information, revise their beliefs, communicate with others, or commit to actions. Research on confidence spreads across several subfields of psychology, neuroscience, economics, artificial intelligence, and philosophy. In accordance with previous chapters, we will study it from the conceptual, computational and neural perspectives.
 
 === Conceptual overview
 
-Everyone knows intuitively what confidence is about. Yet it is not that straightforward to characterize it from a scientific standpoint. We start by defining what confidence is (and is not). We then review how it can be measured experimentally, and its different roles in cognition.
+Everyone knows intuitively what confidence is about. Yet, it is not that straightforward to characterize it from a scientific standpoint. We start by defining what confidence is (and is not). Afterwards, we review how it can be experimentally measured, and study its different roles in cognition.
 
 ==== Definition and distinctions
 
-Confidence has been defined as a belief about the validity of our own thoughts, knowledge or performance that relies on a subjective feeling @grimaldiThereAreThings2015. This psychological, human-centered definition is challenged by recent advances in a nascent field: the neuroscience of confidence. In particular, studies have shown that the sense of confidence, from both behavioral and neuronal standpoints, is not specifically human but shared with other mammals like monkeys or rodents @kepecsNeuralCorrelatesComputation2008. Moreover, concepts like ”belief”, ”thought” and ”feeling” are problematic from a neuroscientific perspective. In the context of decision-making, confidence has been defined as the subjective estimate of decision quality @brusSourcesConfidenceValuebased2021, or more formally as the probability that a choice or proposition is correct given the available evidence @pougetConfidenceCertaintyDistinct2016. Confidence in one's own (hypothetical) decisions or actions is sometimes called _propositional confidence_ @flemingMetacognitionConfidenceReview. In a broader perspective, we argue that confidence can de defined as the subjective estimate of reliability for an internal cognitive variable. This formulation illustrates several key traits of confidence:
+Confidence has been defined as a belief about the validity of our own thoughts, knowledge or performance that relies on a subjective feeling @grimaldiThereAreThings2015. This psychological, human-centered definition is challenged by recent advances in an emergent field: the neuroscience of confidence. In particular, studies have shown that the sense of confidence, from both behavioral and neuronal standpoints, is not specifically human but shared with other mammals like monkeys or rodents @kepecsNeuralCorrelatesComputation2008. In the narrower context of decision-making, confidence has been defined as the subjective estimate of decision quality @brusSourcesConfidenceValuebased2021, or more formally as the probability that a choice or proposition is correct given the available evidence @pougetConfidenceCertaintyDistinct2016. Confidence in one's own (hypothetical) decisions or actions is sometimes called _propositional confidence_ @flemingMetacognitionConfidenceReview. In a more general perspective, we propose that confidence can de defined as _the subjective, graded estimate of how likely a belief, valuation, decision, or action is to be correct, accurate, or successful_. By belief, we mean an internal representation, held by an agent, that a proposition or percept corresponds to the actual state of the world. The previous definition illustrates several key traits of confidence:
 
 - Unlike a qualitative feeling or impression, it is a graded, quantitative signal;
-- It always has an object which is related to one's own cognitive processes: a perception, a decision, a memory, etc;
+- It always has an object related to one's own cognitive processes: a perception, a decision, a memory, etc;
 - It is subjective, and may not match the objective property of its object.
 
 Confidence is the outcome of a second-order judgment @flemingNeuralBasisMetacognitive2012. When you decide which street to take, a first-order cognitive process generates the choice itself, and a second-order process evaluates how reliable that choice is likely to be. Confidence judgments directly reflect a person's assessment of their own cognitive processes and are applicable to many domains (perception, memory, reasoning, decision-making, etc.). They are indeed the major and most widely studied form of metacognitive monitoring @flemingHowMeasureMetacognition2014, @flemingMetacognitionConfidenceReview.
 
-Now that confidence has been more precisely defined, we should be able to distinguish it from related but non-identical constructs. This is the object of the following paragraphs.
+Now that confidence has been formally defined, we should be able to distinguish it from related but non-identical constructs. This is the object of the following paragraphs.
 
 ===== Accuracy <par:confidence_accuracy>
 
 Accuracy, the fact of being exact or correct, is an objective, externally observable property. On the contrary, confidence is subjective and subject-centric. Confidence may actually be decoupled from accuracy: two people (or the same person on two different occasions) can perform identically on a task while reporting very different levels of confidence. Systematic discrepancies define _overconfidence_ (confidence exceeds accuracy) and _underconfidence_ (the opposite). Both are pervasive problems in decision-making: for example, overconfidence has been linked to belief in conspiracy theories @pennycookFrameworkUnderstandingReasoning, anti-scientific stances @lightKnowledgeOverconfidenceAssociated2022, and susceptibility to misinformation @lyonsOverconfidenceNewsJudgments2021.
 
-Confidence _calibration_ is the degree to which confidence matches accuracy. A well-calibrated agent expresses confidence levels that closely match their accuracy on the task they perform. Good calibration is more important for effective decision-making than high levels of confidence.
+Confidence _calibration_ is the degree to which confidence matches accuracy. A well-calibrated agent expresses confidence levels that closely match their performance on the task they perform. Good calibration avoids the pitfalls of overconfidence and underconfidence, and is more important for effective decision-making than high levels of confidence.
 
 ===== Certainty
 
-Confidence and certainty are often used interchangeably in everyday language. At first glance, it may seem like confidence and uncertainty are merely the inverse (or reciprocal) of one another @meynielConfidenceBayesianProbability2015. In the context of decision-making, an argument can be made that they are in fact computationally distinct quantities @pougetConfidenceCertaintyDistinct2016. (Un)certainty refers to probabilistic representations of information over any sensory or cognitive variable (for example, how sure the visual system is about a moving object's direction). Certainty estimates are decision-independent: they exist whether or not any choice has been made. Confidence, by contrast, is inherently choice-dependent: there is no confidence without a decision to be confident about. The conceptual relationship between confidence and (un)certainty is very much the same as the relationship between ”summary statistics” (mean, standard deviation, etc.) and the data they describe @meynielConfidenceBayesianProbability2015. Confidence quantifies the degree of certainty associated with a cognitive variable. It is a scalar, task-specific estimate (for example, a numerical rating on a scale) derived from certainty distributions. As we shall see later (@par:conf_neural), this distinction is supported by research about the neural basis of confidence.
+Confidence and certainty are often used interchangeably in everyday language. At first glance, it may seem like confidence and uncertainty are merely the inverse (or reciprocal) of one another @meynielConfidenceBayesianProbability2015. However, an argument can be made that they are in fact computationally distinct quantities @pougetConfidenceCertaintyDistinct2016. (Un)certainty refers to probabilistic representations of information over any sensory or cognitive variable: for example, how sure the visual system is about a moving object's direction. Certainty estimates are decision-independent: they exist whether or not any choice has to be made. Confidence, by contrast, is inherently choice-dependent: there is no confidence without a decision to be confident about. The conceptual relationship between confidence and (un)certainty is very much the same as the relationship between ”summary statistics” (mean, standard deviation, etc.) and the data they describe @meynielConfidenceBayesianProbability2015. Confidence quantifies the degree of certainty associated with its object. It is a scalar, task-specific estimate (for example, a numerical rating on a scale) derived from certainty distributions. As we shall see later (@par:conf_neural), this distinction is supported by research about the neural basis of confidence.
 
 ===== Error monitoring
 
@@ -41,7 +40,7 @@ Confidence and error monitoring are closely related metacognitive processes, but
 
 ===== Trust
 
-Confidence and trust play distinct roles in decision-making. Confidence is related to an internal cognitive variable (thought, knowledge, decision, etc). Trust is the willingness to rely on another person, system, or source despite uncertainty. Unlike confidence, it is a social construct implying a relationship between a _trustor_ and a _trustee_. A decision-maker may be highly confident in their own assessment while placing little trust in external advice.
+Confidence and trust play distinct roles in decision-making. Confidence is a subjective estimation of reliability about a belief, valuation, decision, or action. Trust is the willingness to rely on another person, system, or source despite uncertainty. Unlike confidence, it is a social construct implying a relationship between a _trustor_ and a _trustee_. Trust carries an expectation not just of competence but often of goodwill and honesty. A decision-maker may be highly confident in their own assessment while placing little trust in external advice (or the other way around).
 
 ==== Measurement
 
@@ -51,7 +50,7 @@ As a subjective, internal quantity, confidence cannot be observed directly. Expl
   image("images/confidence/mamassianVisualConfidence2020_1.png", width: 100%),
   caption: flex-caption(
     short: [Flow of information for perceptual and confidence judgments],
-    long: [Flow of Information for perceptual (type 1) and confidence (type 2) judgments. Perceptual decisions rely on sensory evidence (physical stimulus $U$) and may be corrupted by sensory noise $N$. Confidence judgments rely on confidence evidence that can be a noisy duplicate of the sensory evidence (serial stream), a novel estimation of the stimulus (parallel stream), or a combination of both. Confidence evidence may also be corrupted by confidence noise $M$. Adapted from @mamassianConfidenceForcedChoiceOther2020.],
+    long: [Flow of information for perceptual (type 1) and confidence (type 2) judgments. Perceptual decisions rely on sensory evidence (physical stimulus $U$) and may be corrupted by sensory noise $N$. Confidence judgments rely on confidence evidence that can be a noisy duplicate of the sensory evidence (serial stream), a novel estimation of the stimulus (parallel stream), or a combination of both. Confidence evidence may also be corrupted by confidence noise $M$. Adapted from @mamassianConfidenceForcedChoiceOther2020.],
   ),
 ) <fig:type1_type2_tasks>
 
@@ -68,7 +67,7 @@ _Post-decision wagering_ replaces verbal or numerical reports with an incentive-
 Finally, the _confidence forced-choice_ paradigm sidesteps individual scale biases by asking participants to directly compare their confidence across two decisions, choosing for which of the two they are more confident, rather than rating each decision separately. Because it relies on relative rather than absolute judgments, this method is particularly well-suited to comparing confidence across different tasks, modalities, or conditions that would otherwise be hard to place on a common scale @mamassianConfidenceForcedChoiceOther2020.
 
 #figure(
-  image("images/confidence/kepecsComputationalFramework2012_1.png", width: 80%),
+  image("images/confidence/kepecsComputationalFramework2012_1.png", width: 70%),
   caption: flex-caption(
     short: [Experimental protocols for stuying confidence in animals],
     long: [Experimental protocols for stuying confidence in animals. _(a) _ Uncertain option tasks add an additional choice to the available responses A nd B. _(b)_ Opt-out tasks offer the possibility of declining the test and receiving a smaller reward. In a fraction of trials, the option to decline is omitted. _(c)_ In post-decision wagering, there is first a type 1 task (here a two-category discrimination between A or B), and then a confidence report, such as low (L) or high (H) options. Adapted from @kepecsComputationalFrameworkStudy2012.],
@@ -84,7 +83,7 @@ _Metacognitive sensitivity_ (also called confidence or type 2 sensitivity) captu
 _Metacognitive bias_ (also called confidence or type 2 bias) describes a difference in subjective confidence despite constant task performance. Two individuals with identical metacognitive sensitivity may nonetheless differ systematically in their average confidence level, one being chronically over- or underconfident (@fig:confidence_measures) .
 
 #figure(
-  image("images/confidence/flemingMeasuringMetacognition2014_1.png", width: 80%),
+  image("images/confidence/flemingMeasuringMetacognition2014_1.png", width: 75%),
   caption: flex-caption(
     short: [Theoretical dissociation between metacognitive sensitivity and bias],
     long: [Theoretical dissociation between metacognitive sensitivity and bias. Each graph shows a hypothetical probability density of confidence ratings for correct and incorrect trials. Metacognitive sensitivity corresponds to the degree of separation between the distributions. Metacognitive bias relates to the overall level of confidence expressed, regardless of the correctness of the trial. Note that contrary to this schematic example, real confidence distributions are unlikely to be Gaussian. Adapted from @flemingHowMeasureMetacognition2014.],
@@ -96,6 +95,14 @@ _Metacognitive efficiency_ (also called confidence efficiency) is a decision-mak
 Together, sensitivity, bias, and efficiency provide complementary views of an agent's metacognitive ability.
 
 ==== Roles
+
+onfidence is not only a retrospective estimate, but an active variable that is involved in many cognitive functions.C
+
+First of all, confidence determines whether a decision-maker should commit to a choice or wait for more information. Within an evidence accumulation framework (@par:decision_eam), low confidence calls for further sampling, whereas high confidence favors early commitment to a choice. The link between confidence and the #acr("SAT") (@par:sat) has been empirically demonstrated: confidence on a given decision predicts the balance of speed and accuracy adopted on the subsequent one, suggesting that decision-makers use their own confidence as an internal signal for tuning future deliberations @desenderConfidencePredictsSpeedaccuracy2019.
+
+Because evidence accumulation can continue briefly after a decision is taken (@par:ddm, @fig:ddm_collapsing_bounds), confidence also enables corrective actions after a choice has been made. Post-decisional evidence accumulation can drive changes of mind @resulajChangesMindDecisionmaking2009. Explicit representations of confidence appear necessary for this process: participants who report low confidence in a choice are more likely to reverse that choice when the same options are presented again later. This relationship is strongest for well-calibrated agents @folkeExplicitRepresentationConfidence2016.
+
+Confidence also impacts how strongly an agent updates its internal states in light of new evidence. Under a Bayesian view of confidence (Section II.3.2.1.3), an agent that is already highly confident in its current belief should update that belief only modestly upon receiving discrepant evidence, whereas an agent with low confidence should revise its belief substantially. Formalized as an effective learning rate, this principle allows confidence to modulate the balance between stability and flexibility in learning, and has been proposed as a general computational bridge between confidence, uncertainty, and volatility (Section II.1.1.5) [40].
 
 Confidence performs multiple cognitive functions:
 - Information-seeking and stopping rules
@@ -115,6 +122,8 @@ An agent updates its belief toward a partner's opinion in proportion to the part
 ===== Signal Detection Theory <par:confidence_sdt>
 
 Type1/type2, meta-d', M-ratio etc (ManiscalcoLau2012)
+
+B. Maniscalco and H. Lau, "A Signal Detection Theoretic Approach for Estimating Metacognitive Sensitivity from Confidence Ratings," Consciousness and Cognition, vol. 21, no. 1, pp. 422–430, Mar. 2012, doi: 10.1016/j.concog.2011.09.021
 
 ===== Bayesian framework
 
@@ -232,3 +241,5 @@ Error-related negativity (ERN)
 Error positivity (Pe)
 
 Confidence and (un)certainty likely rely on distinct neural implementations — certainty encoded locally within domain-specific sensory and cognitive areas, and confidence computed downstream in associative regions such as orbitofrontal or prefrontal cortex — making the conceptual distinction essential for interpreting neural data on decision-making.
+
+R. Kiani and M. N. Shadlen, "Representation of Confidence Associated with a Decision by Neurons in the Parietal Cortex," Science, vol. 324, no. 5928, pp. 759–764, May 2009, doi: 10.1126/science.1169405

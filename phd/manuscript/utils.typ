@@ -70,6 +70,10 @@
     it
     v(12%, weak: true)
   }
+  show heading.where(level: 2): it => {
+    pagebreak(weak: true)
+    it
+  }
   set math.equation(numbering: "(1)")
   body
 }
